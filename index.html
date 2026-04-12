@@ -6,7 +6,7 @@
   <title>Дмитрий — Больше всего я горжусь...</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -31,13 +31,13 @@
   <!-- SLIDES WRAPPER -->
   <main class="slides-wrapper" id="slidesWrapper">
 
-    <!-- СЛАЙД 1: ИНТРО-ХУК -->
+    <!-- СЛАЙД 1: ИНТРО -->
     <section class="slide" id="slide-0">
       <div class="slide-inner">
         <div class="slide-number">01</div>
         <div class="intro-content">
-          <p class="intro-kicker">публичное выступление</p>
-          <h1 class="intro-title">
+          <p class="kicker">публичное выступление</p>
+          <h1 class="hero-title">
             Больше всего<br>
             <em>на свете</em><br>
             я горжусь...
@@ -60,7 +60,7 @@
           <div class="stat-divider"></div>
           <div class="stat-item">
             <span class="stat-num">−30%</span>
-            <span class="stat-label">затрат на AI<br>благодаря моему коду</span>
+            <span class="stat-label">затрат на AI<br>благодаря коду</span>
           </div>
         </div>
         <button class="cta-next" onclick="goTo(1)">
@@ -77,10 +77,10 @@
           <p class="section-label">История</p>
           <h2 class="section-title">Как студент<br>первого курса<br>попал в прод</h2>
           <p class="section-body">
-            Пока одногруппники сдавали первую сессию, я уже деплоил микросервисы в компанию с нагрузкой полтора миллиона запросов в день.
+            Пока одногруппники сдавали первую сессию, уже деплоились микросервисы в компанию с нагрузкой полтора миллиона запросов в день.
           </p>
           <p class="section-body">
-            Не потому что повезло — а потому что начал писать код раньше, чем поступил в университет.
+            Не потому что повезло — а потому что написание кода началось раньше, чем поступление в университет.
           </p>
         </div>
         <div class="split-right">
@@ -112,7 +112,7 @@
               </div>
               <div class="tl-content">
                 <strong>AI-инициатива</strong>
-                <p>Первыми в компании начали внедрять LLM. RAG-пайплайн, pgvector, MCP — я в том числе.</p>
+                <p>Первыми в компании начали внедрять LLM. RAG-пайплайн, pgvector, MCP.</p>
               </div>
             </div>
             <div class="tl-row">
@@ -135,18 +135,18 @@
       <div class="slide-inner">
         <div class="slide-number">03</div>
         <p class="section-label">Главный урок</p>
-        <h2 class="section-title section-title--center">Что я понял<br>за 10 месяцев</h2>
+        <h2 class="section-title section-title--center">Что за 10 месяцев<br>стало очевидным</h2>
 
         <blockquote class="big-quote">
-          «Не бояться ошибиться в проде —<br>
-          <em>это и есть настоящий рост.</em>»
+          Не бояться ошибиться в проде —<br>
+          <em>это и есть настоящий рост.</em>
         </blockquote>
 
         <div class="cards-grid">
           <div class="card">
             <div class="card-icon">⚙</div>
             <h3>Backend</h3>
-            <p>FastAPI · PostgreSQL · Celery · Redis · Docker — не просто слова из резюме. Это то, что я открывал каждое утро.</p>
+            <p>FastAPI · PostgreSQL · Celery · Redis · Docker — не просто слова из резюме. Это то, что открывалось каждое утро.</p>
           </div>
           <div class="card">
             <div class="card-icon">◈</div>
@@ -162,22 +162,22 @@
       </div>
     </section>
 
-    <!-- СЛАЙД 4: AI-ФИШКА -->
+    <!-- СЛАЙД 4: AI-ЧАТИ -->
     <section class="slide" id="slide-3">
       <div class="slide-inner slide-inner--chat">
         <div class="slide-number">04</div>
         <div class="chat-header">
           <p class="section-label">Фишка выступления</p>
           <h2 class="section-title">Спросите AI<br>о моём опыте</h2>
-          <p class="chat-subtitle">Выберите вопрос — и увидите ответ прямо сейчас, без ожидания.</p>
+          <p class="chat-subtitle">Выберите вопрос — получите ответ прямо сейчас.</p>
         </div>
 
         <div class="chat-area">
           <div class="chat-window" id="chatWindow">
             <div class="chat-msg chat-msg--ai">
-              <div class="chat-avatar">AI</div>
+              <div class="chat-avatar chat-avatar--ai">AI</div>
               <div class="chat-bubble">
-                Привет! Я знаю всё о профессиональном опыте Дмитрия. Задайте вопрос — отвечу честно и по делу.
+                <p>Привет! Я знаю всё о профессиональном опыте Дмитрия. Задайте вопрос — отвечу честно и по делу.</p>
               </div>
             </div>
           </div>

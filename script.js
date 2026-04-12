@@ -3,45 +3,45 @@ let currentSlide = 0;
 const totalSlides = 4;
 let isAnimating = false;
 
-// ===== ЗАГОТОВЛЕННЫЕ ОТВЕТЫ AI =====
+// ===== ОТВЕТЫ AI =====
 const AI_ANSWERS = {
   work: {
     q: 'Чем занимался в Cortexa?',
-    a: `В Cortexa я работал Backend/AI-инженером в команде, которая развивала платформу автоматизации бизнес-процессов — до 1.5 миллиона API-запросов в сутки.
+    a: `Cortexa — платформа автоматизации бизнес-процессов с пиковой нагрузкой до 1.5 миллиона API-запросов в сутки. Дмитрий работал там Backend/AI-инженером.
 
-Писал микросервисы на FastAPI, проектировал базы данных, делал миграции PostgreSQL. Параллельно был частью AI-инициативы: первыми в компании начали внедрять LLM в продукт.`
+Он проектировал микросервисы на FastAPI, занимался схемами баз данных и production-миграциями PostgreSQL. Параллельно участвовал в AI-инициативе — одни из первых начали внедрять LLM в реальный продукт.`
   },
   rag: {
     q: 'Что такое RAG и зачем?',
-    a: `RAG — Retrieval-Augmented Generation. Это архитектура, при которой языковая модель перед ответом сначала ищет нужные документы в базе знаний.
+    a: `RAG (Retrieval-Augmented Generation) — архитектура, при которой модель перед генерацией ответа сначала извлекает релевантные документы из базы знаний.
 
-Мы использовали это, чтобы LLM опиралась на внутренние данные компании, а не «выдумывала» ответы. Для хранения и поиска — векторное расширение pgvector в PostgreSQL.`
+В Cortexa это решало конкретную задачу: вместо «галлюцинаций» LLM опиралась на реальные внутренние данные компании. Для хранения и поиска по векторным эмбеддингам использовалось расширение pgvector для PostgreSQL.`
   },
   age: {
     q: 'Как попал на работу в 18?',
-    a: `Начал писать код ещё до поступления в университет. Когда появился оффер — просто был готов.
+    a: `Дмитрий начал программировать до поступления в университет — к моменту первого оффера уже был готов к production-задачам.
 
-Честно: первые задачи были страшновато брать. Но я делал, получал код-ревью от сеньора, переделывал. Так и работает.`
+Первые недели были интенсивными: незнакомая кодовая база, ревью от опытных инженеров, реальная ответственность. Именно такое давление ускоряет рост быстрее любого учебного курса.`
   },
   result: {
     q: 'Самый крутой результат?',
-    a: `Думаю, Redis-кэширование семантических ответов LLM. Звучит просто, но за этим стоит: понять, какие запросы повторяются, настроить правильный TTL, не сломать консистентность.
+    a: `Redis-кэширование семантических ответов LLM. Задача нетривиальная: нужно определить, какие запросы достаточно похожи, чтобы переиспользовать кэш — не ломая консистентность.
 
-Результат — минус 30% платных запросов к внешнему AI-провайдеру в рамках пилота. Реальные деньги, сэкономленные кодом студента первого курса.`
+Итог пилота: минус 30% платных запросов к внешнему AI-провайдеру. Прямая экономия бюджета — достигнутая кодом студента первого курса.`
   },
   stack: {
     q: 'Какой стек использовал?',
-    a: `Backend: Python, FastAPI, SQLAlchemy, Alembic, Pytest, Celery, Redis, Docker.
+    a: `Backend: Python, FastAPI, SQLAlchemy, Alembic, Celery, Redis, Docker, Pytest.
 
-База данных: PostgreSQL + pgvector для хранения эмбеддингов.
+База данных: PostgreSQL + pgvector для хранения векторных эмбеддингов.
 
-AI/ML: OpenAI API, Anthropic API, RAG-пайплайн, MCP. Всё в связке с реальной production-нагрузкой.`
+AI-слой: OpenAI API, Anthropic API, RAG-пайплайн собственной разработки, MCP. Всё — под реальной production-нагрузкой, не в учебных проектах.`
   },
   hard: {
     q: 'Самое сложное что делал?',
-    a: `Нетривиальная миграция с изменением типов полей и пересчётом данных на лету. Под ревью сеньора, в production, без даунтайма и потери данных.
+    a: `Нетривиальная миграция с изменением типов полей и пересчётом данных на лету. Production. Без даунтайма. Под контролем senior-инженера.
 
-Когда всё прошло — это было одно из лучших ощущений. Это уже не учебный проект.`
+Alembic-скрипт, временные столбцы, батчевое обновление, проверки на каждом шаге. Когда всё прошло чисто — это была настоящая production-задача с последствиями, не учебный проект.`
   }
 };
 
@@ -72,47 +72,39 @@ function go(dir) {
 }
 
 function updateUI() {
-  // Прогресс-бар
   const fill = document.getElementById('progressFill');
   fill.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
 
-  // Счётчик
   document.getElementById('navCurrent').textContent =
     String(currentSlide + 1).padStart(2, '0');
 
-  // Точки
   document.querySelectorAll('.nav-dot').forEach((dot, i) => {
     dot.classList.toggle('active', i === currentSlide);
   });
 
-  // Кнопки стрелок
   document.getElementById('btnPrev').disabled = currentSlide === 0;
   document.getElementById('btnNext').disabled = currentSlide === totalSlides - 1;
 }
 
-// ===== AI ЧАТ (ИМИТАЦИЯ) =====
+// ===== AI ЧАТ =====
 function askQuestion(btn, key) {
   if (btn.disabled) return;
 
   const data = AI_ANSWERS[key];
   if (!data) return;
 
-  // Дизейблим все кнопки на время
   const chips = document.querySelectorAll('.chip');
   chips.forEach(c => c.disabled = true);
   btn.classList.add('used');
 
   addUserMessage(data.q);
 
-  // Имитируем "думает"
   const typingEl = addTypingIndicator();
 
-  // Задержка как будто думает
-  const delay = 600 + Math.random() * 600;
+  const delay = 700 + Math.random() * 600;
   setTimeout(() => {
     typingEl.remove();
     addAIMessage(data.a);
-    // Разблокируем остальные чипы
     chips.forEach(c => {
       if (c !== btn) c.disabled = false;
     });
@@ -136,15 +128,15 @@ function addAIMessage(text) {
   const msg = document.createElement('div');
   msg.className = 'chat-msg chat-msg--ai';
 
-  // Форматируем переносы строк
-  const formatted = escapeHtml(text).replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+  const formatted = escapeHtml(text)
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/\n/g, '<br>');
 
   msg.innerHTML = `
-    <div class="chat-avatar">AI</div>
-    <div class="chat-bubble">${formatted}</div>
+    <div class="chat-avatar chat-avatar--ai">AI</div>
+    <div class="chat-bubble"><p>${formatted}</p></div>
   `;
 
-  // Анимация появления
   msg.style.opacity = '0';
   msg.style.transform = 'translateY(8px)';
   win.appendChild(msg);
@@ -162,7 +154,7 @@ function addTypingIndicator() {
   const msg = document.createElement('div');
   msg.className = 'chat-msg chat-msg--ai';
   msg.innerHTML = `
-    <div class="chat-avatar">AI</div>
+    <div class="chat-avatar chat-avatar--ai">AI</div>
     <div class="chat-bubble">
       <div class="typing-dots">
         <span></span><span></span><span></span>
@@ -195,7 +187,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') go(-1);
 });
 
-// ===== SWIPE (мобилка) =====
+// ===== SWIPE =====
 let touchStartY = 0;
 document.addEventListener('touchstart', e => {
   touchStartY = e.touches[0].clientY;
