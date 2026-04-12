@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Дмитрий — Больше всего я горжусь...</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ПРОГРЕСС-БАР -->
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
+  <!-- НАВИГАЦИЯ -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-name">Дмитрий</div>
+    <div class="nav-slides">
+      <button class="nav-dot active" data-slide="0" onclick="goTo(0)"></button>
+      <button class="nav-dot" data-slide="1" onclick="goTo(1)"></button>
+      <button class="nav-dot" data-slide="2" onclick="goTo(2)"></button>
+      <button class="nav-dot" data-slide="3" onclick="goTo(3)"></button>
+    </div>
+    <div class="nav-counter"><span id="navCurrent">01</span> / 04</div>
+  </nav>
+
+  <!-- SLIDES WRAPPER -->
+  <main class="slides-wrapper" id="slidesWrapper">
+
+    <!-- СЛАЙД 1: ИНТРО-ХУК -->
+    <section class="slide" id="slide-0">
+      <div class="slide-inner">
+        <div class="slide-number">01</div>
+        <div class="intro-content">
+          <p class="intro-kicker">публичное выступление</p>
+          <h1 class="intro-title">
+            Больше всего<br>
+            <em>на свете</em><br>
+            я горжусь...
+          </h1>
+          <div class="intro-reveal">
+            <div class="reveal-line"></div>
+            <p class="intro-punchline">тем, что в <strong>18 лет</strong> писал код<br>для миллиона запросов в день.</p>
+          </div>
+        </div>
+        <div class="intro-stats">
+          <div class="stat-item">
+            <span class="stat-num">1.5M</span>
+            <span class="stat-label">API-запросов<br>в сутки</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num">10</span>
+            <span class="stat-label">месяцев<br>в продакшне</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num">−30%</span>
+            <span class="stat-label">затрат на AI<br>благодаря моему коду</span>
+          </div>
+        </div>
+        <button class="cta-next" onclick="goTo(1)">
+          Как это вышло? <span class="arrow">↓</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- СЛАЙД 2: ИСТОРИЯ -->
+    <section class="slide" id="slide-1">
+      <div class="slide-inner slide-inner--split">
+        <div class="slide-number">02</div>
+        <div class="split-left">
+          <p class="section-label">История</p>
+          <h2 class="section-title">Как студент<br>первого курса<br>попал в прод</h2>
+          <p class="section-body">
+            Пока одногруппники сдавали первую сессию, я уже деплоил микросервисы в компанию с нагрузкой полтора миллиона запросов в день.
+          </p>
+          <p class="section-body">
+            Не потому что повезло — а потому что начал писать код раньше, чем поступил в университет.
+          </p>
+        </div>
+        <div class="split-right">
+          <div class="timeline">
+            <div class="tl-row">
+              <div class="tl-meta">
+                <span class="tl-year">2025</span>
+                <span class="tl-dot-line"></span>
+              </div>
+              <div class="tl-content">
+                <strong>Первый оффер</strong>
+                <p>Backend / AI Engineer в Cortexa. 1 курс, 1 семестр.</p>
+              </div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-meta">
+                <span class="tl-year"></span>
+                <span class="tl-dot-line"></span>
+              </div>
+              <div class="tl-content">
+                <strong>Первые задачи</strong>
+                <p>FastAPI, PostgreSQL, Celery. Сложная миграция — без даунтайма и потери данных.</p>
+              </div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-meta">
+                <span class="tl-year"></span>
+                <span class="tl-dot-line"></span>
+              </div>
+              <div class="tl-content">
+                <strong>AI-инициатива</strong>
+                <p>Первыми в компании начали внедрять LLM. RAG-пайплайн, pgvector, MCP — я в том числе.</p>
+              </div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-meta">
+                <span class="tl-year">2026</span>
+                <span class="tl-dot-line tl-dot-line--last"></span>
+              </div>
+              <div class="tl-content">
+                <strong>Результат</strong>
+                <p>Redis-кэширование срезало 30% платных AI-запросов. Реальный эффект от кода студента.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЛАЙД 3: ЧТО ПОНЯЛ -->
+    <section class="slide" id="slide-2">
+      <div class="slide-inner">
+        <div class="slide-number">03</div>
+        <p class="section-label">Главный урок</p>
+        <h2 class="section-title section-title--center">Что я понял<br>за 10 месяцев</h2>
+
+        <blockquote class="big-quote">
+          «Не бояться ошибиться в проде —<br>
+          <em>это и есть настоящий рост.</em>»
+        </blockquote>
+
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-icon">⚙</div>
+            <h3>Backend</h3>
+            <p>FastAPI · PostgreSQL · Celery · Redis · Docker — не просто слова из резюме. Это то, что я открывал каждое утро.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">◈</div>
+            <h3>AI-инженерия</h3>
+            <p>RAG · LLM · pgvector · MCP · embeddings. Внедрял, когда это было в новинку даже для сеньоров.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">◎</div>
+            <h3>Мышление</h3>
+            <p>Проектировать под нагрузку. Думать об отказоустойчивости. Писать код, за который не стыдно.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЛАЙД 4: AI-ФИШКА -->
+    <section class="slide" id="slide-3">
+      <div class="slide-inner slide-inner--chat">
+        <div class="slide-number">04</div>
+        <div class="chat-header">
+          <p class="section-label">Фишка выступления</p>
+          <h2 class="section-title">Спросите AI<br>о моём опыте</h2>
+          <p class="chat-subtitle">Выберите вопрос — и увидите ответ прямо сейчас, без ожидания.</p>
+        </div>
+
+        <div class="chat-area">
+          <div class="chat-window" id="chatWindow">
+            <div class="chat-msg chat-msg--ai">
+              <div class="chat-avatar">AI</div>
+              <div class="chat-bubble">
+                Привет! Я знаю всё о профессиональном опыте Дмитрия. Задайте вопрос — отвечу честно и по делу.
+              </div>
+            </div>
+          </div>
+
+          <div class="chip-row" id="chipRow">
+            <button class="chip" onclick="askQuestion(this, 'work')">Чем занимался в Cortexa?</button>
+            <button class="chip" onclick="askQuestion(this, 'rag')">Что такое RAG и зачем?</button>
+            <button class="chip" onclick="askQuestion(this, 'age')">Как попал на работу в 18?</button>
+            <button class="chip" onclick="askQuestion(this, 'result')">Самый крутой результат?</button>
+            <button class="chip" onclick="askQuestion(this, 'stack')">Какой стек использовал?</button>
+            <button class="chip" onclick="askQuestion(this, 'hard')">Самое сложное что делал?</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- СТРЕЛКИ НАВИГАЦИИ -->
+  <div class="nav-arrows">
+    <button class="arrow-btn" id="btnPrev" onclick="go(-1)">↑</button>
+    <button class="arrow-btn" id="btnNext" onclick="go(1)">↓</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
