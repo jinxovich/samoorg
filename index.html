@@ -11,24 +11,23 @@
 </head>
 <body>
 
-  <!-- ПРОГРЕСС-БАР -->
   <div class="progress-track">
     <div class="progress-fill" id="progressFill"></div>
   </div>
 
-  <!-- НАВИГАЦИЯ -->
   <nav class="nav" id="mainNav">
     <div class="nav-name">Дмитрий</div>
     <div class="nav-slides">
-      <button class="nav-dot active" data-slide="0" onclick="goTo(0)"></button>
-      <button class="nav-dot" data-slide="1" onclick="goTo(1)"></button>
-      <button class="nav-dot" data-slide="2" onclick="goTo(2)"></button>
-      <button class="nav-dot" data-slide="3" onclick="goTo(3)"></button>
+      <button class="nav-dot active" onclick="goTo(0)"></button>
+      <button class="nav-dot" onclick="goTo(1)"></button>
+      <button class="nav-dot" onclick="goTo(2)"></button>
+      <button class="nav-dot" onclick="goTo(3)"></button>
+      <button class="nav-dot" onclick="goTo(4)"></button>
+      <button class="nav-dot" onclick="goTo(5)"></button>
     </div>
-    <div class="nav-counter"><span id="navCurrent">01</span> / 04</div>
+    <div class="nav-counter"><span id="navCurrent">01</span> / 06</div>
   </nav>
 
-  <!-- SLIDES WRAPPER -->
   <main class="slides-wrapper" id="slidesWrapper">
 
     <!-- СЛАЙД 1: ИНТРО -->
@@ -44,7 +43,7 @@
           </h1>
           <div class="intro-reveal">
             <div class="reveal-line"></div>
-            <p class="intro-punchline">тем, что в <strong>18 лет</strong> писал код<br>для миллиона запросов в день.</p>
+            <p class="intro-punchline">тем, что сразу после ЕГЭ писал код<br>для <strong>миллиона запросов</strong> в день.</p>
           </div>
         </div>
         <div class="intro-stats">
@@ -69,18 +68,18 @@
       </div>
     </section>
 
-    <!-- СЛАЙД 2: ИСТОРИЯ -->
+    <!-- СЛАЙД 2: КАК ПОПАЛ -->
     <section class="slide" id="slide-1">
       <div class="slide-inner slide-inner--split">
         <div class="slide-number">02</div>
         <div class="split-left">
-          <p class="section-label">История</p>
-          <h2 class="section-title">Как студент<br>первого курса<br>попал в прод</h2>
+          <p class="section-label">Начало</p>
+          <h2 class="section-title">Сразу после<br>ЕГЭ — в прод</h2>
           <p class="section-body">
-            Пока одногруппники сдавали первую сессию, уже деплоились микросервисы в компанию с нагрузкой полтора миллиона запросов в день.
+            Пока одноклассники выбирали специальность, уже шёл онбординг в продуктовую команду. Junior Backend Developer — первый оффер ещё до первой пары в универе.
           </p>
           <p class="section-body">
-            Не потому что повезло — а потому что написание кода началось раньше, чем поступление в университет.
+            Код писал до поступления. Когда появился оффер — был готов. Страшно? Да. Отказываться? Не вариант.
           </p>
         </div>
         <div class="split-right">
@@ -91,8 +90,8 @@
                 <span class="tl-dot-line"></span>
               </div>
               <div class="tl-content">
-                <strong>Первый оффер</strong>
-                <p>Backend / AI Engineer в Cortexa. 1 курс, 1 семестр.</p>
+                <strong>ЕГЭ сдан — оффер получен</strong>
+                <p>Junior Backend Developer в Cortexa. Платформа с нагрузкой 1.5M API-запросов в сутки.</p>
               </div>
             </div>
             <div class="tl-row">
@@ -101,8 +100,8 @@
                 <span class="tl-dot-line"></span>
               </div>
               <div class="tl-content">
-                <strong>Первые задачи</strong>
-                <p>FastAPI, PostgreSQL, Celery. Сложная миграция — без даунтайма и потери данных.</p>
+                <strong>Первые задачи в продакшне</strong>
+                <p>FastAPI, PostgreSQL, SQLAlchemy. Все задачи доводил до прода после код-ревью тимлида.</p>
               </div>
             </div>
             <div class="tl-row">
@@ -111,8 +110,8 @@
                 <span class="tl-dot-line"></span>
               </div>
               <div class="tl-content">
-                <strong>AI-инициатива</strong>
-                <p>Первыми в компании начали внедрять LLM. RAG-пайплайн, pgvector, MCP.</p>
+                <strong>Рост до AI Engineer</strong>
+                <p>Попал в инициативную группу внедрения LLM — первыми в компании начали интегрировать AI в продукт.</p>
               </div>
             </div>
             <div class="tl-row">
@@ -121,8 +120,8 @@
                 <span class="tl-dot-line tl-dot-line--last"></span>
               </div>
               <div class="tl-content">
-                <strong>Результат</strong>
-                <p>Redis-кэширование срезало 30% платных AI-запросов. Реальный эффект от кода студента.</p>
+                <strong>10 месяцев спустя</strong>
+                <p>Backend-разработка, AI-инженерия, реальные метрики. Студент первого курса с production-опытом.</p>
               </div>
             </div>
           </div>
@@ -130,18 +129,88 @@
       </div>
     </section>
 
-    <!-- СЛАЙД 3: ЧТО ПОНЯЛ -->
+    <!-- СЛАЙД 3: BACKEND -->
     <section class="slide" id="slide-2">
       <div class="slide-inner">
         <div class="slide-number">03</div>
+        <p class="section-label">Backend-разработка</p>
+        <h2 class="section-title section-title--center">Инфраструктура,<br>которая не падает</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-num">01</div>
+            <h3>Микросервисы</h3>
+            <p>Разрабатывал и поддерживал сервисы на FastAPI. Совместно с тимлидом проектировал структуру запросов/ответов для новых модулей.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-num">02</div>
+            <h3>Миграции БД</h3>
+            <p>Проектировал модели (SQLAlchemy), писал миграции (Alembic). Провёл сложную нетривиальную миграцию с изменением типов полей — без даунтайма и потери данных.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-num">03</div>
+            <h3>Тесты и CI</h3>
+            <p>Покрыл ~50% критичного функционала юнит- и интеграционными тестами на Pytest. Настроил их запуск в CI-пайплайне.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-num">04</div>
+            <h3>Интеграции</h3>
+            <p>Подключал платёжный шлюз и сторонние API с обеспечением отказоустойчивости. Актуализировал docker-compose и писал техдокументацию по эндпоинтам.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЛАЙД 4: AI -->
+    <section class="slide" id="slide-3">
+      <div class="slide-inner slide-inner--split">
+        <div class="slide-number">04</div>
+        <div class="split-left">
+          <p class="section-label">AI-инженерия</p>
+          <h2 class="section-title">LLM<br>в production —<br>не в ноутбуке</h2>
+          <p class="section-body">
+            Участвовал в разработке AI-модуля для генерации контента — от пилотного скрипта до полноценного внедрения с фидбеком от продукта.
+          </p>
+          <p class="section-body">
+            Написал надёжную обёртку для OpenAI/Anthropic API: таймауты, fallback-сценарии, повторные попытки. Настроил логирование потребления токенов и задержек.
+          </p>
+        </div>
+        <div class="split-right">
+          <div class="ai-stack">
+            <div class="ai-item">
+              <span class="ai-tag">RAG</span>
+              <p>Помогал проектировать пайплайн, чтобы LLM опиралась на внутреннюю базу знаний компании.</p>
+            </div>
+            <div class="ai-item">
+              <span class="ai-tag">pgvector</span>
+              <p>Хранение эмбеддингов и семантический поиск прямо в PostgreSQL — без внешних векторных БД.</p>
+            </div>
+            <div class="ai-item">
+              <span class="ai-tag">Celery</span>
+              <p>Вынес долгие LLM-вызовы в фоновые задачи, реализовал асинхронный polling статуса для фронтенда.</p>
+            </div>
+            <div class="ai-item">
+              <span class="ai-tag">Redis Cache</span>
+              <p>Кэшировал семантические ответы LLM — минус 30% платных запросов к AI-провайдеру в пилоте.</p>
+            </div>
+            <div class="ai-item">
+              <span class="ai-tag">MCP</span>
+              <p>Исследовал и тестировал интеграцию для безопасного доступа LLM-агентов к корпоративной БД.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЛАЙД 5: УРОК -->
+    <section class="slide" id="slide-4">
+      <div class="slide-inner">
+        <div class="slide-number">05</div>
         <p class="section-label">Главный урок</p>
         <h2 class="section-title section-title--center">Что за 10 месяцев<br>стало очевидным</h2>
-
         <blockquote class="big-quote">
           Не бояться ошибиться в проде —<br>
           <em>это и есть настоящий рост.</em>
         </blockquote>
-
         <div class="cards-grid">
           <div class="card">
             <div class="card-icon">⚙</div>
@@ -162,16 +231,15 @@
       </div>
     </section>
 
-    <!-- СЛАЙД 4: AI-ЧАТИ -->
-    <section class="slide" id="slide-3">
+    <!-- СЛАЙД 6: AI-ЧАТ -->
+    <section class="slide" id="slide-5">
       <div class="slide-inner slide-inner--chat">
-        <div class="slide-number">04</div>
+        <div class="slide-number">06</div>
         <div class="chat-header">
           <p class="section-label">Фишка выступления</p>
           <h2 class="section-title">Спросите AI<br>о моём опыте</h2>
           <p class="chat-subtitle">Выберите вопрос — получите ответ прямо сейчас.</p>
         </div>
-
         <div class="chat-area">
           <div class="chat-window" id="chatWindow">
             <div class="chat-msg chat-msg--ai">
@@ -181,14 +249,14 @@
               </div>
             </div>
           </div>
-
           <div class="chip-row" id="chipRow">
             <button class="chip" onclick="askQuestion(this, 'work')">Чем занимался в Cortexa?</button>
             <button class="chip" onclick="askQuestion(this, 'rag')">Что такое RAG и зачем?</button>
-            <button class="chip" onclick="askQuestion(this, 'age')">Как попал на работу в 18?</button>
+            <button class="chip" onclick="askQuestion(this, 'age')">Как попал на работу после ЕГЭ?</button>
             <button class="chip" onclick="askQuestion(this, 'result')">Самый крутой результат?</button>
             <button class="chip" onclick="askQuestion(this, 'stack')">Какой стек использовал?</button>
             <button class="chip" onclick="askQuestion(this, 'hard')">Самое сложное что делал?</button>
+            <button class="chip" onclick="askQuestion(this, 'tests')">Как покрывал код тестами?</button>
           </div>
         </div>
       </div>
@@ -196,7 +264,6 @@
 
   </main>
 
-  <!-- СТРЕЛКИ НАВИГАЦИИ -->
   <div class="nav-arrows">
     <button class="arrow-btn" id="btnPrev" onclick="go(-1)">↑</button>
     <button class="arrow-btn" id="btnNext" onclick="go(1)">↓</button>
