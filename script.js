@@ -3,6 +3,44 @@ let currentSlide = 0;
 const totalSlides = 6;
 let isAnimating = false;
 
+// ===== LIVE COUNTER =====
+// 1 500 000 запросов в сутки = ~17.36 в секунду
+const RPS = 1500000 / 86400;
+let counterValue = 0;
+let counterStartTime = Date.now();
+let counterInterval = null;
+let lastFlash = 0;
+
+function startCounter() {
+  counterStartTime = Date.now();
+  counterValue = 0;
+  if (counterInterval) clearInterval(counterInterval);
+
+  counterInterval = setInterval(() => {
+    const elapsed = (Date.now() - counterStartTime) / 1000;
+    const newValue = Math.floor(elapsed * RPS);
+
+    if (newValue !== counterValue) {
+      counterValue = newValue;
+      const el = document.getElementById('liveCount');
+      if (el) {
+        el.textContent = counterValue.toLocaleString('ru-RU');
+        const now = Date.now();
+        if (now - lastFlash > 80) {
+          lastFlash = now;
+          el.classList.add('tick');
+          setTimeout(() => el.classList.remove('tick'), 120);
+        }
+      }
+    }
+  }, 50);
+}
+
+function stopCounter() {
+  if (counterInterval) clearInterval(counterInterval);
+}
+
+
 // ===== ОТВЕТЫ AI =====
 const AI_ANSWERS = {
   work: {
@@ -205,3 +243,4 @@ document.addEventListener('touchend', e => {
 // ===== INIT =====
 document.getElementById('slide-0').classList.add('active');
 updateUI();
+startCounter();
