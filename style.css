@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Syne:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap');
 
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -18,8 +18,72 @@
   --border-light: #EDE8E0;
   --serif: 'Cormorant Garamond', Georgia, serif;
   --sans: 'Syne', system-ui, sans-serif;
-  --mono: 'JetBrains Mono', monospace;
+  --mono: 'DM Mono', monospace;
   --slide-duration: 0.6s;
+}
+
+/* ===== DARK THEME ===== */
+body.dark {
+  --bg: #0E0D0B;
+  --bg-card: #161512;
+  --ink: #F0EDE6;
+  --ink-2: #B8B2A7;
+  --ink-3: #6B6660;
+  --gold: #C8A96E;
+  --gold-light: #1E1A12;
+  --blue: #6B8FD4;
+  --blue-light: #0D1525;
+  --red: #D95A4A;
+  --border: #2A2720;
+  --border-light: #222019;
+}
+
+/* ===== THEME TOGGLE ===== */
+.theme-toggle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.theme-icon {
+  position: absolute;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.theme-icon--dark {
+  opacity: 0;
+  transform: rotate(-30deg) scale(0.7);
+}
+
+body.dark .theme-icon--light {
+  opacity: 0;
+  transform: rotate(30deg) scale(0.7);
+}
+
+body.dark .theme-icon--dark {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+/* Smooth theme transition */
+body {
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 html, body {
@@ -227,12 +291,13 @@ html, body {
 
 .stat-num {
   display: block;
-  font-family: var(--serif);
-  font-size: clamp(1.9rem, 4vw, 3rem);
-  font-weight: 300;
+  font-family: var(--mono);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 400;
   color: var(--ink);
   line-height: 1;
   margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
 }
 
 .stat-label {
@@ -671,6 +736,60 @@ html, body {
 .slide.active .card:nth-child(2) { animation: fadeUp 0.5s 0.35s ease both; }
 .slide.active .card:nth-child(3) { animation: fadeUp 0.5s 0.5s ease both; }
 
+/* ===== CHAT INPUT ===== */
+.chat-input-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.chat-input {
+  flex: 1;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: var(--bg-card);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.chat-input::placeholder {
+  color: var(--ink-3);
+}
+
+.chat-input:focus {
+  border-color: var(--gold);
+}
+
+.chat-send {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--blue);
+  color: white;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.chat-send:hover:not(:disabled) {
+  opacity: 0.85;
+  transform: scale(1.08);
+}
+
+.chat-send:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
 /* ===== SCROLLBAR ===== */
 .chat-window::-webkit-scrollbar { width: 3px; }
 .chat-window::-webkit-scrollbar-track { background: transparent; }
@@ -833,13 +952,12 @@ html, body {
 }
 
 .live-counter__num {
-  font-family: var(--serif);
+  font-family: var(--mono);
   font-size: clamp(2.8rem, 6vw, 5rem);
   font-weight: 300;
   color: var(--ink);
   line-height: 1;
-  letter-spacing: -0.02em;
-  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
   transition: color 0.15s ease;
 }
 

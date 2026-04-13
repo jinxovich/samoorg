@@ -6,7 +6,7 @@
   <title>Дмитрий — Больше всего я горжусь...</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Syne:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Syne:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -26,6 +26,10 @@
       <button class="nav-dot" onclick="goTo(5)"></button>
     </div>
     <div class="nav-counter"><span id="navCurrent">01</span> / 06</div>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Тёмная тема">
+      <span class="theme-icon theme-icon--light">☀</span>
+      <span class="theme-icon theme-icon--dark">☽</span>
+    </button>
   </nav>
 
   <main class="slides-wrapper" id="slidesWrapper">
@@ -54,7 +58,6 @@
           <div class="live-counter__num" id="liveCount">0</div>
           <div class="live-counter__sub">запросов</div>
         </div>
-
         <div class="intro-stats">
           <div class="stat-item">
             <span class="stat-num">1.5M</span>
@@ -254,7 +257,7 @@
             <div class="chat-msg chat-msg--ai">
               <div class="chat-avatar chat-avatar--ai">AI</div>
               <div class="chat-bubble">
-                <p>Привет! Я знаю всё о профессиональном опыте. Задайте вопрос — отвечу.</p>
+                <p>Привет! Я знаю всё о профессиональном опыте Дмитрия. Задайте вопрос — отвечу.</p>
               </div>
             </div>
           </div>
